@@ -5,18 +5,17 @@ labels: bug
 ---
 
 #### Description
+
 A clear and concise description of what the issue is.
 
 
 #### Additional Information
-Steps to reproduce the behavior: (Example)
-1. Start Dashboard
-2. Click on the Hamburger
-3. Press ALT-F4
-4. Browser Closes...
+
+Please provide additional information. This may include a forum post, some info about your environment that might be helpful or a script example to reproduce this issue. 
 
 
 #### Version Information
+
 - Universal: 1.2.8
 - Universal Hosting Method (IIS, Executable, docker etc): Any
 - PowerShell: Any
