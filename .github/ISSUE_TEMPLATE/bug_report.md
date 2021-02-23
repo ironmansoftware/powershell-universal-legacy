@@ -20,7 +20,3 @@ Please provide additional information. This may include a forum post, some info 
 - Universal Hosting Method (IIS, Executable, docker etc): Any
 - PowerShell: Any
 - Operating System: Any
-
-#### Internal Issue
-
-We'll fill this out when we create an internal issue in our repository. 
