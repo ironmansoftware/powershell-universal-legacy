@@ -1,4 +1,4 @@
-name: Publish - Active Directory Module
+name: Publish - Monitoring Module
 on: [workflow_dispatch]
 
 jobs:
