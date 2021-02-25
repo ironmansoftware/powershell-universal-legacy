@@ -7,7 +7,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Release
-          run: .\Components\ActiveDirectory\release.ps1
+          run: ./Components/ActiveDirectory/release.ps1
           env:
             PowerShellGalleryKey: ${{ secrets.POWERSHELL_GALLERY_KEY }}
           shell: pwsh
