@@ -27,3 +27,15 @@ Universal Dashboard components for Active Directory.
 
 - New-UDADPasswordResetForm
 - New-UDADRestoreDeletedUserTable
+
+## Monitoring
+
+Universal Dashboard monitoring components.
+
+- New-UDPerformanceCounterGraph
+
+## Network
+
+Universal Dashboard network components. 
+
+- New-UDPingForm

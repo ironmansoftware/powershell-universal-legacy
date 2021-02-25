@@ -1,0 +1,14 @@
+name: Publish - Active Directory Module
+on: [workflow_dispatch]
+
+jobs:
+    build:
+      name: Build
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v1
+        - name: Release
+          run: ./Components/Network/release.ps1
+          env:
+            PowerShellGalleryKey: ${{ secrets.POWERSHELL_GALLERY_KEY }}
+          shell: pwsh
