@@ -26,3 +26,4 @@ This repository contains purpose built Components for the Universal Dashboard v3
 Universal Dashboard components for Active Directory.
 
 - New-UDADPasswordResetForm
+- New-UDADRestoreDeletedUserTable
