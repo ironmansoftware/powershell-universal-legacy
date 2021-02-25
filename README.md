@@ -17,9 +17,12 @@ PowerShell Universal is the ultimate platform for building web-based IT tools.
 
 # About this repository
 
-This is an issue tracker for PowerShell Universal. Please provide as much information as possible when submitting an issue. We would like to know the following
+This repository contains purpose built Components for the Universal Dashboard v3. 
 
-- Operating System and Version
-- PowerShell Universal Version
-- PowerShell Version
-- If possible, example script
+# Component Libraries 
+
+## Active Directory 
+
+Universal Dashboard components for Active Directory.
+
+- New-UDADPasswordResetForm
