@@ -29,8 +29,13 @@ Universal Dashboard components for Active Directory.
 Install-Module UniversalDashboard.ActiveDirectory
 ```
 
-- New-UDADPasswordResetForm
-- New-UDADRestoreDeletedUserTable
+### New-UDADPasswordResetForm
+
+Creates a form to reset Active Directory passwords. 
+
+### New-UDADRestoreDeletedUserTable
+
+Creates a table that allows you to restore deleted objects.
 
 ## Monitoring
 
@@ -40,7 +45,9 @@ Universal Dashboard monitoring components.
 Install-Module UniversalDashboard.Monitoring
 ```
 
-- New-UDPerformanceCounterGraph
+### New-UDPerformanceCounterGraph
+
+Creates a graph based on the specified performance counter. 
 
 ## Network
 
@@ -50,7 +57,9 @@ Universal Dashboard network components.
 Install-Module UniversalDashboard.Network
 ```
 
-- New-UDPingForm
+### New-UDPingForm
+
+Creates a form that allows you to ping a machine or address.
 
 ## SQL 
 
@@ -60,5 +69,13 @@ Universal Dashboard SQL components. Requires [dbatools](https://dbatools.io/).
 Install-Module UniversalDashboard.SQL
 ```
 
-- New-UDSQLTable
-- New-UDSQLQueryTool
+### New-UDSQLTable
+
+Easily create a table that performs server-side querying. 
+
+### New-UDSQLQueryTool
+
+Create a query tool that allows users to query a SQL database. 
+
+![](./images/querytool.png)
+
