@@ -25,6 +25,10 @@ This repository contains purpose built Components for the Universal Dashboard v3
 
 Universal Dashboard components for Active Directory.
 
+```
+Install-Module UniversalDashboard.ActiveDirectory
+```
+
 - New-UDADPasswordResetForm
 - New-UDADRestoreDeletedUserTable
 
@@ -32,16 +36,29 @@ Universal Dashboard components for Active Directory.
 
 Universal Dashboard monitoring components.
 
+```
+Install-Module UniversalDashboard.Monitoring
+```
+
 - New-UDPerformanceCounterGraph
 
 ## Network
 
 Universal Dashboard network components. 
 
+```
+Install-Module UniversalDashboard.Network
+```
+
 - New-UDPingForm
 
 ## SQL 
 
 Universal Dashboard SQL components. Requires [dbatools](https://dbatools.io/).
+
+```
+Install-Module UniversalDashboard.SQL
+```
+
 
 - New-UDSQLTable
