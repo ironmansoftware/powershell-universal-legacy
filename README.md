@@ -39,3 +39,9 @@ Universal Dashboard monitoring components.
 Universal Dashboard network components. 
 
 - New-UDPingForm
+
+## SQL 
+
+Universal Dashboard SQL components. Requires [dbatools](https://dbatools.io/).
+
+- New-UDSQLTable
