@@ -60,5 +60,5 @@ Universal Dashboard SQL components. Requires [dbatools](https://dbatools.io/).
 Install-Module UniversalDashboard.SQL
 ```
 
-
 - New-UDSQLTable
+- New-UDSQLQueryTool
