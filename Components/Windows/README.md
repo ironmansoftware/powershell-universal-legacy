@@ -2,7 +2,7 @@
 
 Creates a table that displays process information.
 
-![](./images/New-UDProcesTable.png)
+![](https://github.com/ironmansoftware/powershell-universal/raw/master/images/New-UDProcessTable.png)
 
 ### New-UDServiceTable
 
