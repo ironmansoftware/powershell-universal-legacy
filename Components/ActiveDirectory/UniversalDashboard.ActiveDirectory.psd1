@@ -12,7 +12,7 @@
 RootModule = 'UniversalDashboard.ActiveDirectory.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -104,7 +104,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/ironmansoftware/powershell-universal'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://github.com/ironmansoftware/powershell-universal/raw/master/Components/ActiveDirectory/icon.jpg'
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''

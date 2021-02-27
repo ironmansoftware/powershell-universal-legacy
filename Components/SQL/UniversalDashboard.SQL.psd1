@@ -104,7 +104,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/ironmansoftware/powershell-universal'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://github.com/ironmansoftware/powershell-universal/raw/master/Components/SQL/icon.jpg'
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''
