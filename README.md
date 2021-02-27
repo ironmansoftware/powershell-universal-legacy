@@ -79,7 +79,7 @@ Create a query tool that allows users to query a SQL database.
 
 ![](./images/querytool.png)
 
-## Windows 
+## [Windows](./Components/Windows/README.md)
 
 Universal Dashboard components for Windows. 
 
@@ -87,7 +87,6 @@ Universal Dashboard components for Windows.
 Install-Module UniversalDashboard.SQL
 ```
 
-### New-UDServiceTable
-
-Creates a table that displays Windows services and provides the ability to stop and start services.
+- New-UDProcessTable
+- New-UDServiceTable
 
