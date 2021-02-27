@@ -2,7 +2,7 @@
 
 Creates a table that displays process information.
 
-![](./../images/New-UDProcesTable.png)
+![](./images/New-UDProcesTable.png)
 
 ### New-UDServiceTable
 
