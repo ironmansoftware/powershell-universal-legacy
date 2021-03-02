@@ -69,24 +69,16 @@ Universal Dashboard SQL components. Requires [dbatools](https://dbatools.io/).
 Install-Module UniversalDashboard.SQL
 ```
 
-### New-UDSQLTable
-
-Easily create a table that performs server-side querying. 
-
-### New-UDSQLQueryTool
-
-Create a query tool that allows users to query a SQL database. 
-
-![](./images/querytool.png)
+- New-UDSQLTable
+- New-UDSQLQueryTool
 
 ## [Windows](./Components/Windows/README.md)
 
 Universal Dashboard components for Windows. 
 
 ```
-Install-Module UniversalDashboard.SQL
+Install-Module UniversalDashboard.Windows
 ```
 
 - New-UDProcessTable
 - New-UDServiceTable
-
