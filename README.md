@@ -29,13 +29,18 @@ Universal Dashboard components for Active Directory.
 Install-Module UniversalDashboard.ActiveDirectory
 ```
 
-### New-UDADPasswordResetForm
+- New-UDADPasswordResetForm
+- New-UDADRestoreDeletedUserTable
 
-Creates a form to reset Active Directory passwords. 
+## [Azure](./Components/Windows/README.md)
 
-### New-UDADRestoreDeletedUserTable
+Universal Dashboard Azure components. 
 
-Creates a table that allows you to restore deleted objects.
+```
+Install-Module UniversalDashboard.Azure
+```
+
+- New-UDAzureAppInsightsCounter
 
 ## Monitoring
 
@@ -45,9 +50,7 @@ Universal Dashboard monitoring components.
 Install-Module UniversalDashboard.Monitoring
 ```
 
-### New-UDPerformanceCounterGraph
-
-Creates a graph based on the specified performance counter. 
+- New-UDPerformanceCounterGraph
 
 ## Network
 
@@ -57,9 +60,7 @@ Universal Dashboard network components.
 Install-Module UniversalDashboard.Network
 ```
 
-### New-UDPingForm
-
-Creates a form that allows you to ping a machine or address.
+- New-UDPingForm
 
 ## SQL 
 
