@@ -14,3 +14,7 @@ PowerShell Universal is the ultimate platform for building web-based IT tools.
 - [Documentation](https://docs.ironmansoftware.com/)
 - [Pricing](https://store.ironmansoftware.com/pricing/powershell-universal)
 - [Forums](https://forums.universaldashboard.io/)
+
+<script>
+window.location.href = "https://ironmansoftware.com/powershell-universal"
+</script>
