@@ -32,7 +32,7 @@ Install-Module UniversalDashboard.ActiveDirectory
 - New-UDADPasswordResetForm
 - New-UDADRestoreDeletedUserTable
 
-## [Azure](./Components/Windows/README.md)
+## [Azure](./Components/Azure/README.md)
 
 Universal Dashboard Azure components. 
 
