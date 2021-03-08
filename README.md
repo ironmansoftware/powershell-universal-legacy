@@ -42,6 +42,17 @@ Install-Module UniversalDashboard.Azure
 
 - New-UDAzureAppInsightsCounter
 
+
+## [Hyper-V](./Components/Hyper-V/README.md)
+
+Universal Dashboard Hyper-V components. 
+
+```
+Install-Module UniversalDashboard.HyperV
+```
+
+- New-UDHVVMWizard
+
 ## Monitoring
 
 Universal Dashboard monitoring components.
