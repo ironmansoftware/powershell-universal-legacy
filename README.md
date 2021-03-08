@@ -52,6 +52,7 @@ Install-Module UniversalDashboard.HyperV
 ```
 
 - New-UDHVVMWizard
+- New-UDHVVMCard
 
 ## Monitoring
 

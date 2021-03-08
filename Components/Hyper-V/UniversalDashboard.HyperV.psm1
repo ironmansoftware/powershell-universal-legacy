@@ -136,3 +136,103 @@ function New-UDHVVMWizard
         }
     } -Orientation vertical
 }
+
+function New-UDHVVMCard {
+    <#
+    .SYNOPSIS
+    Creates a card with information about a VM. 
+    
+    .DESCRIPTION
+    Creates a card with information about a VM. Requires the UniversalDashboard.Style component to be loaded. 
+    
+    .PARAMETER ComputerName
+    The name of the Hyper-V host to connect to.
+    
+    .PARAMETER Credential
+    The credential used to connect to the Hyper-V host.
+    
+    .PARAMETER VMName
+    The name of the VM to display. 
+    
+    .EXAMPLE
+    New-UDHVVMCard -VMName 'active-directory'
+
+    Creates a virtual machine card based on the VM named active-dirctory.
+    #>
+    param(
+        [Parameter()]
+        [string]$ComputerName,
+        [Parameter()]
+        [PSCredential]$Credential,
+        [Parameter(Mandatory)]
+        [string]$VMName
+    )
+
+    $ConnectionInfo = @{}
+
+    if ($ComputerName)
+    {
+        $ConnectionInfo["ComputerName"] = $ComputerName 
+    }
+
+    if ($Credential)
+    {
+        $ConnectionInfo["Credential"] = $Credential 
+    }
+
+    New-UDDynamic -Id "$($VMName)_card" -Content {
+        $VM = Get-VM -Name $VMName @ConnectionInfo
+
+        $Header = New-UDCardHeader -Title $VM.Name
+    
+        $Footer = New-UDCardFooter -Content {
+            if ($VM.State -eq 'Running')
+            {
+                New-UDButton -Variant text -Text 'Stop' -OnClick {
+                    Show-UDToast -Message 'Stopping VM...' -Duration 5000
+                    Stop-VM -VMName $VM.name @ConnectionInfo 
+                    Sync-UDElement -Id "$($VMName)_card"
+                }
+            } else {
+                New-UDButton -Variant text -Text 'Start' -OnClick {
+                    Show-UDToast -Message 'Starting VM...' -Duration 5000
+                    Start-VM -VMName $VM.name @ConnectionInfo 
+                    Sync-UDElement -Id "$($VMName)_card"
+                }
+            }
+            
+        }
+    
+        $Body = New-UDCardBody -Content {
+            New-UDTable -Data ($VM | Select-Object Name, State, CPUUsage, MemoryAssigned, Uptime)  -Dense 
+        }
+    
+        $Expand = New-UDCardExpand -Content {
+            New-UDElement -Tag 'div' -Content {
+                New-UDTable -Data ($VM.DvdDrives | Select-Object Name, DvdMediaType, Path) -Title 'DVD Drives' -Dense
+            } 
+            
+            $Drives = Get-VMHardDiskDrive -VMName $VM.Name @ConnectionInfo | Select-Object Name, Path
+            New-UDTable -Data $Drives -Title 'Hard Disk Drives' -Dense
+
+            New-UDTable -Data ($VM.NetworkAdapters | Select-Object 'SwitchName', 'MacAddress' ) -Dense -Title 'Network Adapters' 
+        }
+    
+        New-UDStyle -Style '.ud-mu-cardexpand { display: block !important }' -Content {
+            New-UDCard -Body $Body -Header $Header -Footer $Footer -Expand $Expand
+        }
+        
+    } -LoadingComponent {
+        New-UDCard -Content {
+            New-UDElement -tag 'div' -Content {
+                New-UDProgress -Circular
+            } -Attributes @{ 
+                style = @{
+                    margin = 'auto'
+                }
+            }
+        } -Title $VMName
+    }
+
+    
+}
