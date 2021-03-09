@@ -43,7 +43,7 @@ function New-UDADPasswordResetForm {
     }
   }
 
-function New-UDADRestoreDeletedUserTable {
+  function New-UDADRestoreDeletedUserTable {
     <#
     .SYNOPSIS
     Creates a table to restore deleted users. 
@@ -72,7 +72,7 @@ function New-UDADRestoreDeletedUserTable {
 
                 try 
                 {
-                    Restore-ADObject -DistinguishedName $Item.DistinguishedName -Server $Server -Credential $Credential
+                    Restore-ADObject -Identity $Item.DistinguishedName -Server $EventData.Server -Credential $EventData.Credential
                     Show-UDToast -Message "Restored user $($Item.Name)" -Duration 5000 
                 }
                 catch 
@@ -87,6 +87,8 @@ function New-UDADRestoreDeletedUserTable {
         @{
             distinguishedname = $_.DistinguishedName
             name = $_.Name
+            server = $Server
+            credential = $Credential
         }
     }
     New-UDTable -Data $DeletedUsers -Columns $Columns
