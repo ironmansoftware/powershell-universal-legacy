@@ -93,5 +93,6 @@ Universal Dashboard components for Windows.
 Install-Module UniversalDashboard.Windows
 ```
 
+- New-UDEventLogTable
 - New-UDProcessTable
 - New-UDServiceTable
