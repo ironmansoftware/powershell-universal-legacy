@@ -6,7 +6,7 @@ If you wish to open an issue in regards to the PowerShell Universal platform, pl
 
 # ⚠ Issue Migration 
 
-We are in the process of migrating issues to a centralized repository for all [Ironman Software products](https://github.com/ironmansoftware/issues)). 
+We are in the process of migrating issues to a centralized repository for all [Ironman Software products](https://github.com/ironmansoftware/issues). 
 
 # Features
 
