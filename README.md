@@ -4,10 +4,6 @@ PowerShell Universal is the ultimate platform for building web-based IT tools. T
 
 If you wish to open an issue in regards to the PowerShell Universal platform, please use the [Ironman Software Issue Tracker](https://github.com/ironmansoftware/issues).
 
-# ⚠ Issue Migration 
-
-We are in the process of migrating issues to a centralized repository for all [Ironman Software products](https://github.com/ironmansoftware/issues). 
-
 # Features
 
 - [APIs](https://docs.ironmansoftware.com/api/about) - Build custom APIs with PowerShell
