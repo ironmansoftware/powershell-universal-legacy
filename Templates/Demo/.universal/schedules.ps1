@@ -1,0 +1,2 @@
+﻿New-PSUSchedule -Cron "0 * * * *" -Script "StartProcess.ps1" -TimeZone "America/Chicago" -Credential "Default" -FilePath 'Notepad' -Name "Start Notepad every hour" 
+New-PSUSchedule -Cron "* * * * *" -Script "CacheProcesses.ps1" -TimeZone "America/Chicago" -Credential "Default" -Name "Cache processes every minute."

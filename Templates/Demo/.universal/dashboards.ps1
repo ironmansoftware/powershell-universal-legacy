@@ -1,0 +1,1 @@
+﻿New-PSUDashboard -Name "ComputerInfo" -FilePath "dashboards\ComputerInfo\ComputerInfo.ps1" -BaseUrl "/dashboard" -Framework "UniversalDashboard:Latest" -SessionTimeout 0 -AutoDeploy
