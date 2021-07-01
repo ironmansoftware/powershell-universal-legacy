@@ -1,0 +1,1 @@
+﻿New-PSUDashboard -Name "Windows" -FilePath "dashboards\Windows\Windows.ps1" -BaseUrl "/dashboard" -Framework "UniversalDashboard:Latest" -Environment "Windows PowerShell" -Component @("UniversalDashboard.Charts:1.3.2") -SessionTimeout 0 -Credential "Default"
