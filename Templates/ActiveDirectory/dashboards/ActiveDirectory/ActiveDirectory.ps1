@@ -42,6 +42,62 @@
     }
   }
 
-New-UDDashboard -Title "Password Reset" -Content {
-    New-UDADPasswordResetForm
+  function New-UDADRestoreDeletedUserTable {
+    <#
+    .SYNOPSIS
+    Creates a table to restore deleted users. 
+    
+    .DESCRIPTION
+    Creates a table to restore deleted users. 
+    
+    .PARAMETER Server
+    The domain or domain controller to connect to. 
+    
+    .PARAMETER Credential
+    The credential used to connect to the domain.
+    #>
+    param(
+        [string]$Server = $ActiveDirectoryServer,
+        [PSCredential]$Credential = $ActiveDirectoryCredential
+    )
+
+    $Columns = @(
+        New-UDTableColumn -Property Name -Title "Name"
+        New-UDTableColumn -Property DistinguishedName -Title "Distinguished Name"
+        New-UDTableColumn -Property Restore -Title Restore -Render {
+            $Item = $EventData
+            New-UDButton -Id "btn$($Item.ObjectGuid)" -Text "Restore" -OnClick { 
+                Show-UDToast -Message "Restoring user $($Item.Name)" -Duration 5000
+
+                try 
+                {
+                    Restore-ADObject -Identity $Item.DistinguishedName -Server $EventData.Server -Credential $EventData.Credential
+                    Show-UDToast -Message "Restored user $($Item.Name)" -Duration 5000 
+                }
+                catch 
+                {
+                    Show-UDToast -Message "Failed to restore user $($_.Exception)" -BackgroundColor red -MessageColor white -Duration 5000
+                }
+            }
+        }
+    )
+
+    $DeletedUsers = Get-ADObject -Filter 'IsDeleted -eq $true -and objectClass -eq "user"' -IncludeDeletedObjects  -Server $Server -Credential $Credential | ForEach-Object {
+        @{
+            distinguishedname = $_.DistinguishedName
+            name = $_.Name
+            server = $Server
+            credential = $Credential
+        }
+    }
+    New-UDTable -Data $DeletedUsers -Columns $Columns
 }
+
+New-UDDashboard -Title "Password Reset" -Pages @(
+  New-UDPage -Name 'Reset Password' -Content {
+    New-UDADPasswordResetForm
+  }
+  New-UDPage -Name 'Restore Deleted User' -Content {
+    New-UDADRestoreDeletedUserTable
+  }
+)
