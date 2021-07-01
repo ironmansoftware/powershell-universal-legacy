@@ -1,13 +1,16 @@
 ---
 name: Bug Report
-about: Report a Bug for PowerShell Universal
+about: Report a Bug for PowerShell Universal components
 labels: bug
 ---
+
+### About 
+
+Note that an issue reported here is in regard to the components in this repository. If you need to open an issue for the PowerShell Universal platform, please use the [Ironman Software Issue Tracker](https://github.com/ironmansoftware.com).
 
 #### Description
 
 A clear and concise description of what the issue is.
-
 
 #### Additional Information
 
