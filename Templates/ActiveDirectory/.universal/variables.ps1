@@ -1,2 +1,2 @@
-﻿New-PSUVariable -Name "ActiveDirectoryServer" -Value "Server" -Description "The AD domain or server to connect to." 
-New-PSUVariable -Name "ActiveDirectoryCredential" -Vault "BuiltInLocalVault" -Type "PSCredential" -Description "The AD credential to use to connect to the domain."
+﻿New-PSUVariable -Name "ActiveDirectoryServer" -Value "172.31.63.235" -Description "The AD domain or server to connect to." 
+New-PSUVariable -Name "ActiveDirectoryCredential" -Vault "BuiltInLocalVault" -Type "PSCredential" -Description "The AD credentials used for connecting to the domain."
