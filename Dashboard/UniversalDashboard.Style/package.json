@@ -1,0 +1,31 @@
+{
+  "name": "ud-style",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p --env production",
+    "dev": "webpack -p --env development"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "emotion": "^10.0.17"
+  },
+  "devDependencies": {
+    "@babel/core": "7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "7.1.0",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.4",
+    "css-loader": "^0.28.7",
+    "file-loader": "2.0.0",
+    "style-loader": "0.23.1",
+    "uglifyjs-webpack-plugin": "0.4.6",
+    "webpack": "4.21.0",
+    "webpack-cli": "^3.1.2"
+  }
+}
