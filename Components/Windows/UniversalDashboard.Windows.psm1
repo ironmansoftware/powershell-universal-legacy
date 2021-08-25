@@ -11,9 +11,9 @@ function New-UDServiceTable
     New-UDServiceTable
     #>
     $Columns = @(
-        New-UDTableColumn -Title 'Name' -Property 'Name'
-        New-UDTableColumn -Title 'Description' -Property 'Description'
-        New-UDTableColumn -Title 'Status' -Property 'Status'
+        New-UDTableColumn -Title 'Name' -Property 'Name' -IncludeInSearch
+        New-UDTableColumn -Title 'Description' -Property 'DisplayName'
+        New-UDTableColumn -Title 'Status' -Property 'Status' -IncludeInSearch
         New-UDTableColumn -Title 'Actions' -Property 'Actions' -Render {
             if ($EventData.Status -eq 'Running')
             {
@@ -53,9 +53,9 @@ function New-UDServiceTable
 
     New-UDDynamic -Id 'serviceTable' -Content {
         $Services = Get-Service 
-        New-UDTable -Columns $Columns -Data $Services -Paging -Sort
+        New-UDTable -Columns $Columns -Data $Services -Sort -ShowSearch -ShowPagination -Dense -PageSize 100
     } -LoadingComponent {
-        New-UDSkeleton 
+        New-UDSkeleton
     }
 }
 
@@ -93,15 +93,15 @@ function New-UDProcessTable
     New-UDProcessTable
     #>
     $Columns = @(
-        New-UDTableColumn -Title 'Id' -Property 'ID'
-        New-UDTableColumn -Title 'Name' -Property 'ProcessName'
+        New-UDTableColumn -Title 'Id' -Property 'ID' -IncludeInSearch
+        New-UDTableColumn -Title 'Name' -Property 'ProcessName' -IncludeInSearch
         New-UDTableColumn -Title 'CPU' -Property 'CPU'
         New-UDTableColumn -Title 'WorkingSet' -Property 'WorkingSet' -Render {
             $EventData.WorkingSet | ConvertTo-ByteString
         }
     )
     $Processes = Get-Process | Select-Object @("Id", "ProcessName", "CPU", "WorkingSet")
-    New-UDTable -Columns $Columns -Data $Processes -Paging -Sort -Search
+    New-UDTable -Columns $Columns -Data $Processes -Sort -ShowSearch -ShowPagination -Dense -PageSize 100
 }
 
 function New-UDEventLogTable {
