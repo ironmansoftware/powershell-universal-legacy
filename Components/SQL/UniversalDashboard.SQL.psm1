@@ -91,9 +91,9 @@ function New-UDSQLTable {
             Query = "$CountQuery $Where"
         }
 
-        if ($PSCredential)
+        if ($Credential)
         {
-            $Parameters["SqlCredential"] = $PSCredential
+            $Parameters["SqlCredential"] = $Credential
         }
 
         $Count = Invoke-DbaQuery @Parameters
@@ -104,9 +104,9 @@ function New-UDSQLTable {
             Query = "$Query $Where ORDER BY $orderBy $orderdirection OFFSET $Offset ROWS FETCH NEXT $PageSize ROWS ONLY" 
         }
 
-        if ($PSCredential)
+        if ($Credential)
         {
-            $Parameters["SqlCredential"] = $PSCredential
+            $Parameters["SqlCredential"] = $Credential
         }
     
         $Data = Invoke-DbaQuery @Parameters
