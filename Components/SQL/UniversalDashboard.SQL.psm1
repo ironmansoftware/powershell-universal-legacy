@@ -27,9 +27,11 @@ function New-UDSQLTable {
     .PARAMETER Credential
     The credential used to connect to the SQL instance. 
     
+    .PARAMETER ID
+    The ID of this table.
+    
     .EXAMPLE
     New-UDSQLTable -Title 'Podcasts' -Columns @("name", "host") -Query "SELECT * FROM shows" -CountQuery "SELECT COUNT(*) as Count from shows" -SQLInstance "localhost" -Database "podcasts"
-
     Creates a table based on the shows table in the Podcasts database. 
     #>
     param(
@@ -46,7 +48,9 @@ function New-UDSQLTable {
         [Parameter(Mandatory)]
         [string[]]$Columns,
         [Parameter()]
-        [PSCredential]$Credential
+        [PSCredential]$Credential,
+        [Parameter()]
+        [string]$Id = [Guid]::NewGuid()
     )
 
     $TableColumns = $Columns | ForEach-Object {
@@ -111,7 +115,7 @@ function New-UDSQLTable {
     
         $Data = Invoke-DbaQuery @Parameters
         $Data | Out-UDTableData -Page $TableData.page -TotalCount $Count.Count -Properties $TableData.properties
-    } -Columns $TableColumns -Sort -Filter -Paging
+    } -Columns $TableColumns -Sort -Filter -Paging -Id $Id
 }
 
 function New-UDSQLQueryTool {
