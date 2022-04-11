@@ -79,7 +79,6 @@ function New-UDSQLTable {
             $Where = "WHERE "
             foreach($filter in $TableData.Filters)
             {
-                Show-UDToast -Message ($Filter | ConvertTo-Json)
                 $Where += $filter.id + " LIKE '%" + $filter.value + "%' AND "
             }
             $Where += " 1 = 1"
