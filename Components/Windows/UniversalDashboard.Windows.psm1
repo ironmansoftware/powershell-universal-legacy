@@ -1,5 +1,4 @@
-function New-UDServiceTable 
-{
+function New-UDServiceTable {
     <#
     .SYNOPSIS
     Creates a table that displays service status.
@@ -15,32 +14,36 @@ function New-UDServiceTable
         New-UDTableColumn -Title 'Description' -Property 'DisplayName'
         New-UDTableColumn -Title 'Status' -Property 'Status' -IncludeInSearch
         New-UDTableColumn -Title 'Actions' -Property 'Actions' -Render {
-            if ($EventData.Status -eq 'Running')
-            {
-                New-UDButton -Text "Stop" -OnClick { 
-                    try 
-                    {
+            if ($EventData.Status -eq 'Running') {
+                New-UDButton -Icon (New-UDIcon -Icon stop) -size small -Onclick {
+                    try {
                         Stop-Service $EventData.Name -ErrorAction stop
                         Show-UDToast -Message "Stopping service $($EventData.Name)"
                         Sync-UDElement -Id 'serviceTable'
                     }
-                    catch 
-                    {
+                    catch {
                         Show-UDToast -Message "Failed to stop service. $_" -BackgroundColor 'red' -Duration 5000 -MessageColor 'white'
                     }
                 } -Icon (New-UDIcon -Icon stop)
+                New-UDButton -Icon (New-UDIcon -Icon redo_alt) -size small -Onclick {
+                    try {
+                        Restart-Service $EventData.Name -ErrorAction stop
+                        Show-UDToast -Message "Restarting service $($EventData.Name)"
+                        Sync-UDElement -Id 'serviceTable'
+                    }
+                    catch {
+                        Show-UDToast -Message "Failed to restart service. $_" -BackgroundColor 'red' -Duration 5000 -MessageColor 'white'
+                    }
+                } -Icon (New-UDIcon -Icon stop)
             }
-            else
-            {
-                New-UDButton -Text "Start" -OnClick { 
-                    try
-                    {
+            else {
+                New-UDButton -Icon (New-UDIcon -Icon play) -size small -Onclick {
+                    try {
                         Start-Service $EventData.Name -ErrorAction stop
                         Show-UDToast -Message "Starting service $($EventData.Name)"
                         Sync-UDElement -Id 'serviceTable'
                     }
-                    catch
-                    {
+                    catch {
                         Show-UDToast -Message "Failed to start service. $_" -BackgroundColor 'red' -Duration 5000 -MessageColor 'white'
 
                     }
@@ -67,8 +70,7 @@ function ConvertTo-ByteString {
 
     Process {
         $suf = @( "B", "KB", "MB", "GB", "TB", "PB", "EB" )
-        if ($byteCount -eq 0)
-        {
+        if ($byteCount -eq 0) {
             return "0" + $suf[0];
         }
             
@@ -80,8 +82,7 @@ function ConvertTo-ByteString {
 
 }
 
-function New-UDProcessTable 
-{
+function New-UDProcessTable {
     <#
     .SYNOPSIS
     Creates a table that displays process information.
@@ -93,6 +94,13 @@ function New-UDProcessTable
     New-UDProcessTable
     #>
     $Columns = @(
+        New-UDTableColumn -Title ' ' -Property 'ToDo' -Render {
+            New-UDButton -Icon (New-UDIcon -Icon times_circle) -size small -Onclick {
+                Get-CimInstance -ClassName Win32_Process -Filter "ProcessId = '$($EventData.id)'" | Invoke-CimMethod -MethodName Terminate
+                Show-UDToast -Message "The process $($EventData.ProcessName) has now been terminated!" -MessageColor 'green' -Theme 'light' -TransitionIn 'bounceInUp' -CloseOnClick -Position center -Duration 4000
+                Sync-UDElement -id 'processTable'
+            }
+        }
         New-UDTableColumn -Title 'Id' -Property 'ID' -IncludeInSearch
         New-UDTableColumn -Title 'Name' -Property 'ProcessName' -IncludeInSearch
         New-UDTableColumn -Title 'CPU' -Property 'CPU'
@@ -100,8 +108,12 @@ function New-UDProcessTable
             $EventData.WorkingSet | ConvertTo-ByteString
         }
     )
-    $Processes = Get-Process | Select-Object @("Id", "ProcessName", "CPU", "WorkingSet")
-    New-UDTable -Columns $Columns -Data $Processes -Sort -ShowSearch -ShowPagination -Dense -PageSize 100
+    New-UDDynamic -Id 'processTable' -Content {
+        $Processes = Get-Process | Select-Object @("Id", "ProcessName", "CPU", "WorkingSet")
+        New-UDTable -Columns $Columns -Data $Processes -Sort -ShowSearch -ShowPagination -Dense -PageSize 100
+    } -LoadingComponent {
+        New-UDSkeleton
+    }
 }
 
 function New-UDEventLogTable {
@@ -134,8 +146,8 @@ function New-UDEventLogTable {
     )
 
     $Sources = Get-WmiObject -Class Win32_NTEventLOgFile | 
-        Select-Object FileName, Sources | 
-        ForEach-Object -Begin { $hash = @{}} -Process { $hash[$_.FileName] = $_.Sources } -end { $Hash }
+    Select-Object FileName, Sources | 
+    ForEach-Object -Begin { $hash = @{} } -Process { $hash[$_.FileName] = $_.Sources } -end { $Hash }
 
     New-UDSelect -Option {
         $Sources.Keys | Sort-Object | ForEach-Object {
@@ -147,8 +159,7 @@ function New-UDEventLogTable {
     }
 
     New-UDDynamic -Id 'eventLogTable' -Content {
-        if ($null -eq $Session:LogName)
-        {
+        if ($null -eq $Session:LogName) {
             $Session:LogName = "Application"
         }
 
