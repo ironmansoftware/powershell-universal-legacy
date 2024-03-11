@@ -1,3 +1,5 @@
+# ⭐ Please use our [script repository](https://github.com/ironmansoftware/scripts) instead
+
 # PowerShell Universal Components and Examples
 
 PowerShell Universal is the ultimate platform for building web-based IT tools. This repository contains components and examples of PowerShell Universal implementations. 
